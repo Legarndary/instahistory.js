@@ -3,6 +3,7 @@
         var settings;
         var searchType;
         var searchUrl;
+        var buildTemplate;
         var $container = this;
 
         settings = $.extend({
@@ -10,8 +11,31 @@
             imageSize: 150,
             limit : 6,
             links : true,          
-            squareImages: true
+            squareImages: true,
+            template: ''
         }, options);
+
+        buildTemplate = function(data, image, link) {
+            String.prototype.allReplace = function(obj) {
+                var retStr = this;
+                for (var x in obj) {
+                    retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
+                }
+                return retStr;
+            };
+
+            var templateCodes = {
+                '{{caption}}': data.edge_media_to_caption.edges[0].node.text,
+                '{{comments}}': data.edge_media_to_comment.count,
+                '{{image}}': image,
+                '{{likes}}': data.edge_liked_by.count,
+                '{{link}}': link
+            }
+
+            var template = settings.template.allReplace(templateCodes);
+
+            return template;
+        }
 
         if(settings.container) {
             if($container.find(settings.container).length > 0) {
@@ -58,6 +82,8 @@
                         for (var i = 0; i < settings.limit; i++) {
                             post = nodes[i].node;
                             image = $('<img/>');
+                            imageUrl = '';
+                            linkUrl =  'https://www.instagram.com/p/' + post.shortcode + '/';
 
                             if(settings.squareImages) {
                                 var size; // is an index in an array
@@ -78,20 +104,26 @@
                                         size = 4;
                                     break;
                                 }
-                                image.attr('src', post.thumbnail_resources[size].src);
+                                imageUrl = post.thumbnail_resources[size].src;
                             } else {
-                                image.attr('src', post.display_url);
+                                imageUrl = post.display_url;
                             }
 
-                            if(settings.links) {
-                                link = $('<a/>',{
-                                    href: 'https://www.instagram.com/p/' + post.shortcode + '/',
-                                    target: '_blank'
-                                }).append(image);
+                            image.attr('src', imageUrl);
 
-                                $container.append(link);
+                            if(settings.template == '') {
+                                if(settings.links) {
+                                    link = $('<a/>',{
+                                        href: linkUrl,
+                                        target: '_blank'
+                                    }).append(image);
+
+                                    $container.append(link);
+                                } else {
+                                    $container.append(image);
+                                }
                             } else {
-                                $container.append(image);
+                                $container.append(buildTemplate(post, imageUrl, linkUrl));
                             }
                         }
                     },
