@@ -1,0 +1,11 @@
+{
+  "name": "instahistory.js",
+  "description": "A simple plugin to get history from Instagram.",
+  "version": "1.0",
+  "author": "Kasper Legarth <kasperlegarth@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Legarndary/instahistory.js.git"
+  },
+  "main": "./instafeed.js"
+}

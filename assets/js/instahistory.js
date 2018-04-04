@@ -7,11 +7,10 @@
 
         settings = $.extend({
             get : '',
-            links : true,
-            limit : 12,
-            squareImages: false,
             imageSize: 150,
-            container : false,
+            limit : 6,
+            links : true,          
+            squareImages: true
         }, options);
 
         if(settings.container) {
