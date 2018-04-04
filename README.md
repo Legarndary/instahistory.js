@@ -1,5 +1,5 @@
 # instahistory.js
-This is a jQuery plugin that makes help you with getting information from Instagram. In short **instahistory** helps you get an Instagrams user's or hashtag's history of posts. All without the use of "Access Token" and "Client Id". 
+This is a jQuery plugin that helps you with getting information from Instagram. In short **instahistory** helps you get an Instagrams user's or hashtag's history of posts. All without the use of "Access Token" and "Client Id". 
 ## Getting Started
 The only thing you need to do for making this works is including jQuery and then the instahistory.js file.
 ```

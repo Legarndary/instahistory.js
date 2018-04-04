@@ -1,0 +1,39 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f3f2f1;
+}
+
+h1 {
+  margin: 40px 0 0;
+  font-size: 26px;
+  font-weight: 400;
+  text-align: center;
+}
+
+#feed {
+  margin: 30px auto 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: .5rem;
+  width: 820px;
+}
+
+#feed img {
+  margin: 10px;
+  width: auto;
+  height: 100%;
+  border-radius: .5rem;
+  float: left;
+}
+
+#feed:after {
+  display: block;
+  content: '';
+  clear: both;
+}
