@@ -49,6 +49,7 @@ As you can see there are a couple of templating tags, this are some tags you can
 
 ## Changelog
 ### 1.1
-- Added **template** option so you can controls the HTML output. Added a small demo with template af basic styling.
+- Added **template** option so you can controls the HTML output. 
+- Added a small demo with template and basic styling.
 ### 1.0
 - Initial release
